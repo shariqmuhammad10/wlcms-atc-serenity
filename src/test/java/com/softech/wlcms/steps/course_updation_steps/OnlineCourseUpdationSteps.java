@@ -30,7 +30,7 @@ public class OnlineCourseUpdationSteps {
 
     @Step
     public void updateCourseMetaData() {
-        courseOverviewPage.navigateToOverview();
+        courseOverviewPage.navigateToOnlineOverview();
         String title = WlcmsHomePage.CourseTypeEnum.ONLINE.getElement() + LoremIpsum.getInstance().getTitle(1, 2);
         courseOverviewPage.updateCourseName(title);
         onlineLeftNavigationPage.clickContent();

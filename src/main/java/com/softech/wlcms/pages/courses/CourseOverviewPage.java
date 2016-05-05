@@ -89,6 +89,9 @@ public class CourseOverviewPage extends WaitActions {
     @FindBy(id = "nav_accordion_0_cr")
     private WebElementFacade overview;
 
+    @FindBy(id = "nav_accordion_0")
+    private WebElementFacade onlineOverview;
+
     public boolean titleNameisDisplayed()
     {
         title.waitUntilVisible();
@@ -223,6 +226,12 @@ public class CourseOverviewPage extends WaitActions {
     public void navigateToOverview() {
         waitUntilLoaded(overview);
         overview.click();
+        logger.info("Click Overview");
+    }
+
+    public void navigateToOnlineOverview() {
+        waitUntilLoaded(onlineOverview);
+        onlineOverview.click();
         logger.info("Click Overview");
     }
 }
