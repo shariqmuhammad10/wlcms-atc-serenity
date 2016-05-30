@@ -19,7 +19,7 @@ import java.util.List;
  * Created by umair.javaid on 3/14/2016.
  */
 public class DatePickerActions extends WaitActions {
-    public static final Logger logger = LoggerFactory.getLogger(DatePickerActions.class);
+    private static final Logger logger = LoggerFactory.getLogger(DatePickerActions.class);
 
     WaitActions waitActions;
 

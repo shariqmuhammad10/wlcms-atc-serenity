@@ -1,5 +1,6 @@
 package com.softech.wlcms.steps.make_offer_steps;
 
+import com.github.javafaker.Faker;
 import com.softech.wlcms.pages.publish.PublishCoursePage;
 import com.softech.wlcms.pages.publish.PublishingPanelPage;
 import net.thucydides.core.annotations.Step;
@@ -14,7 +15,7 @@ import static junit.framework.TestCase.assertTrue;
  */
 
 public class MakeOfferSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(MakeOfferSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(MakeOfferSteps.class);
 
     PublishingPanelPage publishingPanelPage;
     PublishCoursePage publishCoursePage;
@@ -23,14 +24,18 @@ public class MakeOfferSteps extends ScenarioSteps {
     public void navigateToMakeOffer()
     {
         publishingPanelPage.clickOffer360MarketPlace();
-        publishCoursePage.clickMakeOffer();
+//        publishCoursePage.clickMakeOffer();
 
     }
 
     @Step
     public void performMakeOffer()
     {
-        publishCoursePage.clickYes();
+        Faker faker = new Faker();
+        String number =faker.numerify("#");
+
+        publishCoursePage.fillPrice(number,number);
+        publishCoursePage.clickOnlinePublish();
         assertTrue(publishCoursePage.isProgressBoxVisible());
     }
 }

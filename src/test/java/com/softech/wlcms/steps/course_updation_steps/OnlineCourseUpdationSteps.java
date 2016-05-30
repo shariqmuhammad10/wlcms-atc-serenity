@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
  * Created by umair.javaid on 3/25/2016.
  */
 public class OnlineCourseUpdationSteps {
-    public static final Logger logger = LoggerFactory.getLogger(OnlineCourseUpdationSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(OnlineCourseUpdationSteps.class);
 
     OnlineLeftNavigationPage onlineLeftNavigationPage;
     CourseCreationSteps courseCreationSteps;

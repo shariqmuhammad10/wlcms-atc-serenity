@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 
 @RunWith(SerenityRunner.class)
 public class UpdateUserProfilePageTest {
-    public static final Logger LOGGER = LoggerFactory.getLogger(UpdateUserProfilePageTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UpdateUserProfilePageTest.class);
 
     @Managed
     WebDriver driver;

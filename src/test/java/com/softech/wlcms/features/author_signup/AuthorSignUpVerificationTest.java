@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 
 @RunWith(SerenityRunner.class)
 public class AuthorSignUpVerificationTest {
-    public static final Logger logger = LoggerFactory.getLogger(AuthorSignUpVerificationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthorSignUpVerificationTest.class);
 
 
     @Managed
