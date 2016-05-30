@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 @DefaultUrl("/lcms")
 public class WlcmsLoginPage  extends PageObject {
-    public static final Logger logger = LoggerFactory.getLogger(WlcmsLoginPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(WlcmsLoginPage.class);
 
     @FindBy(id = "username")
     private WebElementFacade username;

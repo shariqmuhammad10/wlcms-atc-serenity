@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 @RunWith(SerenityRunner.class)
 public class RePublishingWebinarCourseMetaDataTest {
-    public static final Logger logger = LoggerFactory.getLogger(RePublishingWebinarCourseMetaDataTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(RePublishingWebinarCourseMetaDataTest.class);
 
     @Managed
     WebDriver driver;

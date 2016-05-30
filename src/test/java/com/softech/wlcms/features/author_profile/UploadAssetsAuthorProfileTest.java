@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(SerenityRunner.class)
 public class UploadAssetsAuthorProfileTest {
-    public static final Logger LOGGER = LoggerFactory.getLogger(UploadAssetsAuthorProfileTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UploadAssetsAuthorProfileTest.class);
 
     @Managed
     WebDriver driver;

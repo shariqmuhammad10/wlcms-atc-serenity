@@ -1,5 +1,6 @@
 package com.softech.wlcms.steps.upload_assets_steps;
 
+import com.github.javafaker.Faker;
 import com.softech.wlcms.pages.author.UserProfilePage;
 import com.softech.wlcms.pages.courses.CourseOverviewPage;
 import com.softech.wlcms.pages.courses.online.OnlineLeftNavigationPage;
@@ -22,7 +23,7 @@ import static org.junit.Assert.assertTrue;
  * Created by umair.javaid on 3/28/2016.
  */
 public class UploadAssetsSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(UploadAssetsSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(UploadAssetsSteps.class);
 
     CourseOverviewPage courseOverviewPage;
     LessonPage lessonPage;
@@ -35,7 +36,7 @@ public class UploadAssetsSteps extends ScenarioSteps {
 
     @Step
     public void uploadInstructorImage() {
-        assertTrue (marketingPage.isMarketingPageDisplayed());
+        assertTrue(marketingPage.isMarketingPageDisplayed());
 //       marketingPage.navigateToUpload();
         marketingPage.uploadImage();
         marketingPage.fillAssetName();
@@ -59,9 +60,11 @@ public class UploadAssetsSteps extends ScenarioSteps {
 
     @Step
     public void uploadImageInSlide() {
-        slidePage.fillVisualAssetName();
+        Faker faker = new Faker();
+        String assetName = faker.name().firstName();
+        slidePage.fillVisualAssetName(assetName);
         slidePage.uploadImageInSlide();
-        slidePage.clickAcceptUploadeImage();
+        slidePage.clickAcceptUploadeButton();
     }
 
     @Step
@@ -89,14 +92,34 @@ public class UploadAssetsSteps extends ScenarioSteps {
         slidePage.fillVideoAssetName(videoAssetName);
         slidePage.uploadVideoInSlide();
         slidePage.clickAcceptUploadeVideo();
-        Assert.assertEquals(videoAssetName,slidePage.getVideoAssetText());
+        Assert.assertEquals(videoAssetName, slidePage.getVideoAssetText());
     }
-@Step
-    public void uploadImageInUserProfile() {
-    userProfilePage.clickEditImage();
-    assertTrue(userProfilePage.imageUploaderIsDisplayed());
-    userProfilePage.uploadImageInAuthorProfile();
-    userProfilePage.clickAcceptProfileImageUpload();
 
+    @Step
+    public void uploadImageInUserProfile() {
+        userProfilePage.clickEditImage();
+        assertTrue(userProfilePage.imageUploaderIsDisplayed());
+        userProfilePage.uploadImageInAuthorProfile();
+        userProfilePage.clickAcceptProfileImageUpload();
+
+    }
+
+    @Step
+    public void uploadAudioInSlide() {
+        String audioAssetName = "Audio Asset _ " + LoremIpsum.getInstance().getName();
+        slidePage.fillAudioAssetName(audioAssetName);
+        slidePage.fillaudioAssetKeyword(audioAssetName);
+        slidePage.uploadAudioInSlide();
+        slidePage.clickAcceptAudioUploadButton();
+
+    }
+
+    @Step
+    public void uploadVideoInMcScenarioSlide() {
+        String videoAssetName = "Video Asset _ " + LoremIpsum.getInstance().getName();
+        slidePage.fillVisualAssetName(videoAssetName);
+        slidePage.selectAssetType(SlidePage.AssetTypeEnum.VIDEO.getElement());
+        slidePage.uploadMcScenarioVideoInSlide();
+        slidePage.clickAcceptUploadeButton();
     }
 }

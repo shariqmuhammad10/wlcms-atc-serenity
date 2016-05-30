@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
  * Created by umair.javaid on 2/24/2016.
  */
 public class WlcmsHomePageSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(WlcmsHomePageSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(WlcmsHomePageSteps.class);
 
     WlcmsHomePage wlcmsHomePage;
 

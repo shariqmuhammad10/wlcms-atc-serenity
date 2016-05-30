@@ -10,11 +10,14 @@ import java.util.Properties;
  */
 public class GetAssets {
 
+
+
     public enum AssetTypeEnum {
         IMAGE("image"),
         PDF("pdf"),
         VIDEO("video"),
-        PPT("ppt");
+        PPT("ppt"),
+        MP3("mp3");
         private String statusCode;
 
         private AssetTypeEnum(String statusCode) {
@@ -41,6 +44,8 @@ public class GetAssets {
             case PPT:
                 path = getPptPath();
                 break;
+            case MP3:
+                path= getMp3Path();
         }
         return path;
     }
@@ -67,6 +72,13 @@ public class GetAssets {
     public String getPptPath()
     {
         URL path = getClass().getClassLoader().getResource("assets/TestAutomation.pptx");
+        String pathPpt = path.getPath();
+        return pathPpt;
+    }
+
+    public String getMp3Path()
+    {
+        URL path = getClass().getClassLoader().getResource("assets/mpthreetest.mp3");
         String pathPpt = path.getPath();
         return pathPpt;
     }

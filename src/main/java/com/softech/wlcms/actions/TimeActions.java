@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  * Created by umair.javaid on 4/21/2016.
  */
 public class TimeActions extends AbstractPageAction {
-    public static final Logger logger = LoggerFactory.getLogger(TimeActions.class);
+    private static final Logger logger = LoggerFactory.getLogger(TimeActions.class);
 
     public String getStartTime(String type) {
         LocalTime time = LocalTime.now().plusHours(1);

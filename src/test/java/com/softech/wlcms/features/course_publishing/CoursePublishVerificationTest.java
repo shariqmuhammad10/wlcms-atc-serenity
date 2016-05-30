@@ -23,7 +23,7 @@ import static junit.framework.TestCase.assertTrue;
 
 @RunWith(SerenityRunner.class)
 public class CoursePublishVerificationTest {
-    public static final Logger logger = LoggerFactory.getLogger(CoursePublishVerificationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(CoursePublishVerificationTest.class);
 
     @Managed
     WebDriver driver;
@@ -52,6 +52,8 @@ public class CoursePublishVerificationTest {
         wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
 
         courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourse();
 
         publishingSteps.navigateToOnlinePublishCourse();
         publishingSteps.performOnlineLmsPublishing();
@@ -73,6 +75,8 @@ public class CoursePublishVerificationTest {
         wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
 
         courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourse();
 
         publishingSteps.navigateToOnlinePublishCourse();
         publishingSteps.performOnlineSFPublishing();

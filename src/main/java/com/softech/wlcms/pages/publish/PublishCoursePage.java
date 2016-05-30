@@ -1,8 +1,9 @@
 package com.softech.wlcms.pages.publish;
 
+import com.softech.wlcms.actions.WaitActions;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,7 @@ import java.util.List;
 
 //import com.ls360.wlcms.course.CoursePage;
 
-public class PublishCoursePage extends PageObject {
+public class PublishCoursePage extends WaitActions {
     private static final Logger logger = LoggerFactory.getLogger(PublishCoursePage.class);
 
     @FindBy(id = "frm_publish")
@@ -28,38 +29,47 @@ public class PublishCoursePage extends PageObject {
     @FindBy(css = "#frm_publish button[type='button']")
     private WebElementFacade cancelButton;
 
-    @FindBy(id = "publishLMS")
+    @FindBy(css = "#publisToLMSBtn .switch-right")
     private WebElementFacade publishLMSOption;
 
-    @FindBy(id = "publishSF")
+    @FindBy(css = "#publisToSFBtn .switch-right.switch-default")
     private WebElement publishSFOption;
 
     @FindBy(id = "makeOfferbtn")
     private WebElementFacade makeOffer;
 
-    @FindBy(id = "divPending")
+    @FindBy(css = ".alert.alert-info.zero-margin")
     private WebElementFacade progressBox;
 
-    @FindBy(id = "confirmationModal")
-    private WebElementFacade makeofferForm;
+    @FindBy(id = "mSRP")
+    private WebElementFacade listPrice;
+
+    @FindBy(id = "lowestSalePrice")
+    private WebElementFacade lowestSalePrice;
 
     @FindBy(css = "#confirmationModal button[type='button']")
     private List<WebElementFacade> yesButton;
 
-    @FindBy(id = "updateCouseContent")
+    @FindBy(css = "#publisToLMSBtn [for='updateLMS']")
     private WebElementFacade updateCouseContent;
 
     @FindBy(id = "updateLMS")
     private WebElementFacade updateLMSOption;
 
+    @FindBy(css = ".alert.alert-success.alert-dismissible.fade.in")
+    private WebElementFacade publishAlert;
+
     @FindBy(id = "updateSF")
     private WebElementFacade updateSFOption;
 
-    public void clickOnlinePublish() {
-        onlinePublishButton.waitUntilClickable();
-        onlinePublishButton.click();
-        logger.info("Published the Course");
+    public void switchLMSPublishingOn() {
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true)", publishLMSOption);
+        waitUntilLoaded(publishLMSOption);
+        publishLMSOption.waitUntilClickable();
+        publishLMSOption.click();
+        logger.info("Switch LMS Publishing Option On");
     }
+
 
     public void clickCancel() {
         cancelButton.click();
@@ -67,7 +77,7 @@ public class PublishCoursePage extends PageObject {
 
     public void waitPublishToComplete() {
 //        WebElementFacade updateLMSOption = getDriver().find(By.id("updateLMS")));
-        updateLMSOption.waitUntilVisible();
+        publishAlert.waitUntilNotVisible();
     }
 
     public void clickUpdateLmsOption() {
@@ -103,10 +113,13 @@ public class PublishCoursePage extends PageObject {
         logger.info("Make Offer on 360 Market Place");
     }
 
-    public void clickYes() {
-        logger.info("Click Yes");
-        makeofferForm.waitUntilVisible();
-        yesButton.get(1).click();
+    public void fillPrice(String listPrice, String lowPrice) {
+        this.listPrice.clear();
+        this.listPrice.sendKeys(listPrice);
+        logger.info("Fill List Price >" + listPrice);
+        lowestSalePrice.clear();
+        lowestSalePrice.sendKeys(lowPrice);
+
     }
 
     public void clickPublish() {
@@ -119,5 +132,10 @@ public class PublishCoursePage extends PageObject {
         return progressBox.isDisplayed();
     }
 
+    public void clickOnlinePublish() {
+        onlinePublishButton.waitUntilClickable();
+        onlinePublishButton.click();
+        logger.info("Published the Course");
+    }
 
 }

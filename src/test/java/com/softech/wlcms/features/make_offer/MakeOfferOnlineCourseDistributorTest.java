@@ -58,6 +58,9 @@ public class MakeOfferOnlineCourseDistributorTest {
 
         courseCreationSteps.createOnlineCourse();
 
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourse();
+
         publishingSteps.navigateToOnlinePublishCourse();
         publishingSteps.performOnlineLmsPublishing();
 
