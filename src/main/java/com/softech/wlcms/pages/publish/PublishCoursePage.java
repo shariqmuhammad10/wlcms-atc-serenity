@@ -2,7 +2,6 @@ package com.softech.wlcms.pages.publish;
 
 import com.softech.wlcms.actions.WaitActions;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -39,11 +38,14 @@ public class PublishCoursePage extends WaitActions {
     @FindBy(id = "makeOfferbtn")
     private WebElementFacade makeOffer;
 
-    @FindBy(id = "divPending")
+    @FindBy(css = ".alert.alert-info.zero-margin")
     private WebElementFacade progressBox;
 
-    @FindBy(id = "confirmationModal")
-    private WebElementFacade makeofferForm;
+    @FindBy(id = "mSRP")
+    private WebElementFacade listPrice;
+
+    @FindBy(id = "lowestSalePrice")
+    private WebElementFacade lowestSalePrice;
 
     @FindBy(css = "#confirmationModal button[type='button']")
     private List<WebElementFacade> yesButton;
@@ -111,10 +113,13 @@ public class PublishCoursePage extends WaitActions {
         logger.info("Make Offer on 360 Market Place");
     }
 
-    public void clickYes() {
-        logger.info("Click Yes");
-        makeofferForm.waitUntilVisible();
-        yesButton.get(1).click();
+    public void fillPrice(String listPrice, String lowPrice) {
+        this.listPrice.clear();
+        this.listPrice.sendKeys(listPrice);
+        logger.info("Fill List Price >" + listPrice);
+        lowestSalePrice.clear();
+        lowestSalePrice.sendKeys(lowPrice);
+
     }
 
     public void clickPublish() {

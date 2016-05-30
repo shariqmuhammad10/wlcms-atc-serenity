@@ -29,7 +29,7 @@ public class PublishingPanelPage extends PageObject {
     @FindBy(id = "lnkWebinarPublishing")
     private WebElementFacade lnkClassroomPublishing;
 
-    @FindBy(css = "#leftMenuOfferOn360Marketplace a")
+    @FindBy(css = "#publisTo360Btn .switch-right.switch-default")
     private WebElementFacade offerOn360Marketplac;
 
     @FindBy(css = "#lnkMarketing a")
