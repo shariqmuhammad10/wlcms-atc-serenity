@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 
 @RunWith(SerenityRunner.class)
 public class LoginVerificationTest {
-    public static final Logger logger = LoggerFactory.getLogger(LoginVerificationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginVerificationTest.class);
 
 
     @Managed

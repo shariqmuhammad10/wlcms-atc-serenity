@@ -5,7 +5,6 @@ package com.softech.wlcms.pages.courses;
  */
 
 
-
 import com.softech.wlcms.actions.WaitActions;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -24,7 +23,6 @@ import java.util.Set;
 
 public class CourseOverviewPage extends WaitActions {
     private static final Logger logger = LoggerFactory.getLogger(CourseOverviewPage.class);
-
 
 
     public enum CourseEnum {
@@ -71,10 +69,10 @@ public class CourseOverviewPage extends WaitActions {
     @FindBy(id = "btnPreviewCourse")
     private WebElementFacade previewCourseButton;
 
-    @FindBy(id = "player")
+    @FindBy(id = "coursetitle")
     private WebElementFacade player;
 
-    @FindBy (css= "#breadcrumbs li")
+    @FindBy(css = "#breadcrumbs li")
     private List<WebElementFacade> courseBreadcrumbs;
 
     @FindBy(css = "#headingDiv h1")
@@ -92,8 +90,7 @@ public class CourseOverviewPage extends WaitActions {
     @FindBy(id = "nav_accordion_0")
     private WebElementFacade onlineOverview;
 
-    public boolean titleNameisDisplayed()
-    {
+    public boolean titleNameisDisplayed() {
         title.waitUntilVisible();
         return title.isDisplayed();
     }
@@ -138,8 +135,7 @@ public class CourseOverviewPage extends WaitActions {
         cancelButton.click();
     }
 
-    public void selectCategory()
-    {
+    public void selectCategory() {
         Select select = new Select(industry);
         select.selectByIndex(2);
 
@@ -161,8 +157,7 @@ public class CourseOverviewPage extends WaitActions {
         logger.info("Course Name > " + title);
     }
 
-    public void updateCourseName(String title)
-    {
+    public void updateCourseName(String title) {
         this.title.waitUntilClickable();
         logger.info("Update Course");
         setTitle(title);
@@ -179,6 +174,8 @@ public class CourseOverviewPage extends WaitActions {
         setTitle(title);
         logger.info("Set Title");
         setDescription(CourseEnum.DESCRIPTION.getElement());
+        logger.info("Set Category Industry");
+        selectCategory();
         logger.info("Set Description");
         setkeyword("RUNNING");
         logger.info("Set Keyword");
@@ -192,7 +189,6 @@ public class CourseOverviewPage extends WaitActions {
         waitUntilLoaded(breadcrumbTrail);
         return breadcrumbTrail.isDisplayed();
     }
-
 
 
     public String getCourseName() {
@@ -209,7 +205,7 @@ public class CourseOverviewPage extends WaitActions {
         logger.info("Click on Preview Course");
     }
 
-        public boolean playerIsDisplayed() {
+    public boolean playerIsDisplayed() {
         String WindowHandle = getDriver().getWindowHandle();
         Set<String> windowHandles = getDriver().getWindowHandles();
         Iterator<String> iterator = windowHandles.iterator();

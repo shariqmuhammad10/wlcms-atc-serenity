@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
  * Created by umair.javaid on 5/4/2016.
  */
 public class AuthorPermissionSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(AuthorPermissionSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthorPermissionSteps.class);
 
     private WlcmsTestDataFromProperties testdata = new WlcmsTestDataFromProperties();
     AuthorPermissionsPage authorPermissionsPage;

@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(SerenityRunner.class)
 public class AuthorPermissionsTest {
-    public final static Logger logger = LoggerFactory.getLogger(AuthorPermissionsTest.class);
+    private final static Logger logger = LoggerFactory.getLogger(AuthorPermissionsTest.class);
 
     @Managed
     WebDriver driver;

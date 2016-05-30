@@ -17,7 +17,7 @@ import static junit.framework.TestCase.assertTrue;
  * Created by umair.javaid on 3/2/2016.
  */
 public class PublishingSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(PublishingSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(PublishingSteps.class);
 
     CourseOverviewPage courseOverviewPage;
     LessonPage lessonPage;
@@ -42,6 +42,7 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performOnlineSFPublishing() {
+        publishCoursePage.switchLMSPublishingOn();
         publishCoursePage.selectSFPublishCheckBox();
         publishCoursePage.clickOnlinePublish();
         publishCoursePage.waitPublishToComplete();
@@ -51,6 +52,7 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performOnlineLmsPublishing() {
+        publishCoursePage.switchLMSPublishingOn();
         publishCoursePage.clickOnlinePublish();
         publishCoursePage.waitPublishToComplete();
         assertTrue(publishCoursePage.isUpdate());

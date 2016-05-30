@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertTrue;
  */
 
 public class MakeOfferSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(MakeOfferSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(MakeOfferSteps.class);
 
     PublishingPanelPage publishingPanelPage;
     PublishCoursePage publishCoursePage;

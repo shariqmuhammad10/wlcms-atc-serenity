@@ -16,7 +16,7 @@ import com.google.common.base.Function;
  * Created by umair.javaid on 3/14/2016.
  */
 public class WaitActions extends AbstractPageAction {
-    public static final Logger logger = LoggerFactory.getLogger(WaitActions.class);
+    private static final Logger logger = LoggerFactory.getLogger(WaitActions.class);
 
     public void waitUntilLoaded(WebElement element){
         logger.debug("WAIT - loaded");

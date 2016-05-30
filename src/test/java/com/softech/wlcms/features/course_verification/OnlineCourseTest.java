@@ -320,6 +320,74 @@ public class OnlineCourseTest {
         logger.info("<----------------------------------------------------->");
     }
 
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Creation of New Slide with MC-Scenario Template Under New Lesson")
+    @Test
+    public void addSlideMCScenarioTemplate() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Add New Slide with MC-Scenario Template Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourseMCScenarioTemplate();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Add New Slide of MC-Scenario Template Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Addition of Text In Slide Component In MC-Scenario Template Under New Lesson")
+    @Test
+    public void addTextInSlideComponentForMCScenarioTemplate() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Text in Slide with MC-Scenario Template Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourseMCScenarioTemplate();
+        courseCreationSteps.addTextInSlideComponents();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Text in Slide of MC-Scenario Template Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Addition of Close Captioning In Slide Component In MC-Scenario Template Under New Lesson")
+    @Test
+    public void addCloseCaptioningInSlideComponentForMCScenarioTemplate() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Close Captioning in Slide with MC-Scenario Template Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourseMCScenarioTemplate();
+        courseCreationSteps.addCloseCaptioningInSlideComponent();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Text in Slide of MC-Scenario Template Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
     @After
     public void tearDown() {
         driver.quit();

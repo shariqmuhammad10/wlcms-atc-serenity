@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
  * Created by umair.javaid on 4/19/2016.
  */
 public class UserProfilePage extends WaitActions{
-    public static final Logger LOGGER = LoggerFactory.getLogger(UserProfilePage.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserProfilePage.class);
 
     GetAssets assets = new GetAssets();
 
