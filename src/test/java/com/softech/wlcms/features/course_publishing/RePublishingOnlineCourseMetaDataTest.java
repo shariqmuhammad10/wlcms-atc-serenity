@@ -57,6 +57,8 @@ public class RePublishingOnlineCourseMetaDataTest {
         wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
 
         courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourse();
 
         publishingSteps.navigateToOnlinePublishCourse();
         publishingSteps.performOnlineLmsPublishing();
@@ -88,6 +90,7 @@ public class RePublishingOnlineCourseMetaDataTest {
 
         courseCreationSteps.createOnlineCourse();
         courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourse();
 
         publishingSteps.navigateToOnlinePublishCourse();
         publishingSteps.performOnlineLmsPublishing();

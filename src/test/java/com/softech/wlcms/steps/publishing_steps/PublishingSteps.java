@@ -80,6 +80,7 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performLmsPublishing() {
+        publishCoursePage.switchLMSPublishingOn();
         publishCoursePage.clickPublish();
         publishCoursePage.waitPublishToComplete();
 //        assertTrue(publishCoursePage.isUpdate());

@@ -21,21 +21,27 @@ public class MakeOfferSteps extends ScenarioSteps {
     PublishCoursePage publishCoursePage;
 
     @Step
-    public void navigateToMakeOffer()
-    {
+    public void navigateToMakeOffer() {
         publishingPanelPage.clickOffer360MarketPlace();
 //        publishCoursePage.clickMakeOffer();
 
     }
 
     @Step
-    public void performMakeOffer()
-    {
+    public void performMakeOfferOnline() {
         Faker faker = new Faker();
-        String number =faker.numerify("#");
-
-        publishCoursePage.fillPrice(number,number);
+        String number = faker.numerify("#");
+        publishCoursePage.fillPrice(number, number);
         publishCoursePage.clickOnlinePublish();
+        assertTrue(publishCoursePage.isProgressBoxVisible());
+    }
+
+    @Step
+    public void performMakeOffer() {
+        Faker faker = new Faker();
+        String number = faker.numerify("#");
+        publishCoursePage.fillPrice(number, number);
+        publishCoursePage.clickPublish();
         assertTrue(publishCoursePage.isProgressBoxVisible());
     }
 }
