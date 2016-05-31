@@ -93,7 +93,7 @@ public class PublishCoursePage extends WaitActions {
 //        }
     }
 
-    public void selectSFPublishCheckBox() {
+    public void switchSFPublishOption() {
         publishSFOption.click();
         publishSFOption.isSelected();
         logger.info("Select Publish to SF");

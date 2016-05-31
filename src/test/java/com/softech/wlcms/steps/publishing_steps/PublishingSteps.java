@@ -43,7 +43,7 @@ public class PublishingSteps extends ScenarioSteps {
     @Step
     public void performOnlineSFPublishing() {
         publishCoursePage.switchLMSPublishingOn();
-        publishCoursePage.selectSFPublishCheckBox();
+        publishCoursePage.switchSFPublishOption();
         publishCoursePage.clickOnlinePublish();
         publishCoursePage.waitPublishToComplete();
         assertTrue(publishCoursePage.isUpdate());
@@ -89,7 +89,8 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performSfPublishing() {
-        publishCoursePage.selectSFPublishCheckBox();
+        publishCoursePage.switchLMSPublishingOn();
+        publishCoursePage.switchSFPublishOption();
         publishCoursePage.clickPublish();
         publishCoursePage.waitPublishToComplete();
 //        assertTrue(publishCoursePage.isUpdate());
@@ -98,7 +99,7 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performSfRePublishing() {
-        publishCoursePage.selectSFRePublishCheckBox();
+//        publishCoursePage.selectSFRePublishCheckBox();
         publishCoursePage.clickPublish();
         publishCoursePage.waitPublishToComplete();
 //        assertTrue(publishCoursePage.isUpdate());

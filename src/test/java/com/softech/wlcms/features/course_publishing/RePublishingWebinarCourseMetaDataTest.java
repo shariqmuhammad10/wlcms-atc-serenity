@@ -117,8 +117,8 @@ public class RePublishingWebinarCourseMetaDataTest {
         webinarCourseUpdationSteps.updateWebinarCourseName();
 
         publishingSteps.navigateToPublishCourse();
-        publishingSteps.selectMetaDataOptionForLms();
-        publishingSteps.performSfRePublishing();
+//        publishingSteps.selectMetaDataOptionForLms();
+        publishingSteps.performSfPublishing();
 
         logger.info("<---------------------------------------------------------------------->");
         logger.info("<---- Webinar Course Meta Data Re-Publish Test is Completed ------>");
@@ -202,8 +202,8 @@ public class RePublishingWebinarCourseMetaDataTest {
         courseCreationSteps.addInstructorInformation();
 
         publishingSteps.navigateToPublishCourse();
-        publishingSteps.selectMetaDataOptionForLms();
-        publishingSteps.performSfRePublishing();
+//        publishingSteps.selectMetaDataOptionForLms();
+        publishingSteps.performSfPublishing();
 
         logger.info("<---------------------------------------------------------------------->");
         logger.info("<---- Webinar Course Content Re-Publish to SF Test is Completed ------>");
