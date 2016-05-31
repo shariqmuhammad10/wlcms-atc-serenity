@@ -35,7 +35,7 @@ public class PublishCoursePage extends WaitActions {
     @FindBy(css = "#publisToSFBtn .switch-right.switch-default")
     private WebElement publishSFOption;
 
-    @FindBy(id = "makeOfferbtn")
+    @FindBy(id = "publishBtn")
     private WebElementFacade makeOffer;
 
     @FindBy(css = ".alert.alert-info.zero-margin")
@@ -53,8 +53,8 @@ public class PublishCoursePage extends WaitActions {
     @FindBy(css = "#publisToLMSBtn [for='updateLMS']")
     private WebElementFacade updateCouseContent;
 
-    @FindBy(id = "updateLMS")
-    private WebElementFacade updateLMSOption;
+    @FindBy(css = "#publisToLMSBtn .switch-right.switch-default")
+    private List<WebElementFacade> updateLMSOption;
 
     @FindBy(css = ".alert.alert-success.alert-dismissible.fade.in")
     private WebElementFacade publishAlert;
@@ -81,13 +81,16 @@ public class PublishCoursePage extends WaitActions {
     }
 
     public void clickUpdateLmsOption() {
-        updateLMSOption.waitUntilClickable();
-        if (!updateLMSOption.isSelected()) {
-            updateLMSOption.click();
-            updateLMSOption.isSelected();
-        } else {
-            logger.info("Select Update LMS Option");
-        }
+        WebElementFacade updateCourseContentButton = updateLMSOption.get(1);
+        waitUntilLoaded(updateCourseContentButton);
+        updateCourseContentButton.waitUntilClickable();
+        updateCourseContentButton.click();
+//        if (!updateLMSOption.isSelected()) {
+//            updateLMSOption.click();
+//            updateLMSOption.isSelected();
+//        } else {
+//            logger.info("Select Update LMS Option");
+//        }
     }
 
     public void selectSFPublishCheckBox() {

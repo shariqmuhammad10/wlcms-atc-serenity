@@ -65,7 +65,7 @@ public class MakeOfferOnlineCourseDistributorTest {
         publishingSteps.performOnlineLmsPublishing();
 
         makeOfferSteps.navigateToMakeOffer();
-        makeOfferSteps.performMakeOffer();
+        makeOfferSteps.performMakeOfferOnline();
 
 
         logger.info("<---------------------------------------------------->");
