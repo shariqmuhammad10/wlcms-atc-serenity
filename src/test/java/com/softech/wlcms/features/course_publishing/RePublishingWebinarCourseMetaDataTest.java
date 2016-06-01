@@ -77,7 +77,7 @@ public class RePublishingWebinarCourseMetaDataTest {
         webinarCourseUpdationSteps.updateWebinarCourseName();
 
         publishingSteps.navigateToPublishCourse();
-        publishingSteps.selectMetaDataOptionForLms();
+//        publishingSteps.selectMetaDataOptionForLms();
         publishingSteps.performLmsPublishing();
 
         logger.info("<---------------------------------------------------------------------->");
@@ -160,7 +160,7 @@ public class RePublishingWebinarCourseMetaDataTest {
         courseCreationSteps.addInstructorInformation();
 
         publishingSteps.navigateToPublishCourse();
-        publishingSteps.selectMetaDataOptionForLms();
+//        publishingSteps.selectMetaDataOptionForLms();
         publishingSteps.performLmsPublishing();
 
         logger.info("<---------------------------------------------------------------------->");
