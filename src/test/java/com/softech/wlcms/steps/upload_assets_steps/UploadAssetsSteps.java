@@ -122,4 +122,11 @@ public class UploadAssetsSteps extends ScenarioSteps {
         slidePage.uploadMcScenarioVideoInSlide();
         slidePage.clickAcceptUploadeButton();
     }
+
+    @Step
+    public void uploadXlsInLesson() {
+        lessonPage.uploadXlsInLesson();
+        lessonPage.supportMaterialAcceptButton();
+
+    }
 }

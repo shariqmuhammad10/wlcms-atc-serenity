@@ -320,7 +320,7 @@ public class CourseCreationSteps extends ScenarioSteps {
         slidePage.expendVideoSlider();
         slidePage.clickAddVideoInSlide();
     }
-
+@Step
     public void addServiceProviderAsOtherProvider() {
         Faker faker = new Faker();
         String url = "https://" + faker.internet().url();
@@ -338,6 +338,7 @@ public class CourseCreationSteps extends ScenarioSteps {
 
     }
 
+    @Step
     public void addNumberQuestionsInFinalExam() {
         String numberOfQuestion = "1";
         questionsPage.addNumberQuestionsInFinalExam(numberOfQuestion);
@@ -347,10 +348,10 @@ public class CourseCreationSteps extends ScenarioSteps {
 
     @Step
     public void addSlideIntoOnlineCourseMCScenarioTemplate() {
-        String title = "Slide -" + LoremIpsum.getInstance().getTitle(1, 3);
-        slidePage.createSlide(SlideTemplateType.ACTIVITY, ActivityTemplateEnum.MC_SCENARIO, title);
+        addSlide(SlideTemplateType.ACTIVITY, ActivityTemplateEnum.MC_SCENARIO);
         assertTrue(slidePage.slideIsDisplayed());
     }
+
     @Step
     public void addTextInSlideComponents() {
         Faker faker = new Faker();
@@ -379,5 +380,23 @@ public class CourseCreationSteps extends ScenarioSteps {
         String text = faker.lorem().fixedString(10);
         slidePage.expendMcSlideCloseCaptioning();
         commonButtonsActions.saveChanges();
+    }
+
+    @Step
+    public void addSlideIntoOnlineCourseDndTemplate() {
+        addSlide(SlideTemplateType.ACTIVITY, ActivityTemplateEnum.DND_MATCHING);
+        assertTrue(slidePage.slideIsDisplayed());
+    }
+
+    @Step
+    public void addSlideIntoOnlineCourseDndCategoryTemplate() {
+        addSlide(SlideTemplateType.ACTIVITY, ActivityTemplateEnum.DND_CATEGORY);
+        assertTrue(slidePage.slideIsDisplayed());
+    }
+
+    private String addSlide(SlideTemplateType template, ActivityTemplateEnum activity) {
+        String title = "Slide -" + LoremIpsum.getInstance().getTitle(1, 3);
+        slidePage.createSlide(template, activity, title);
+        return title;
     }
 }

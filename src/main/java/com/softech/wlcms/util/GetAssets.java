@@ -12,12 +12,14 @@ public class GetAssets {
 
 
 
+
     public enum AssetTypeEnum {
         IMAGE("image"),
         PDF("pdf"),
         VIDEO("video"),
         PPT("ppt"),
-        MP3("mp3");
+        MP3("mp3"),
+        XLS("xls");
         private String statusCode;
 
         private AssetTypeEnum(String statusCode) {
@@ -45,40 +47,45 @@ public class GetAssets {
                 path = getPptPath();
                 break;
             case MP3:
-                path= getMp3Path();
+                path = getMp3Path();
+            case XLS:
+                path = getXlsPath();
         }
         return path;
     }
 
-    public String getImagePath() {
+    private String getImagePath() {
         URL path = getClass().getClassLoader().getResource("assets/uploadtest.jpg");
         String pathImage = path.getPath();
         return pathImage;
     }
 
-    public String getPdfPath() {
+    private String getPdfPath() {
 
         URL path = getClass().getClassLoader().getResource("assets/testpdf.pdf");
         String pathpdf = path.getPath();
         return pathpdf;
     }
 
-    public String getVideoPath() {
+    private String getVideoPath() {
         URL path = getClass().getClassLoader().getResource("assets/uploadTestVideo.mp4");
         String pathVideo = path.getPath();
         return pathVideo;
     }
 
-    public String getPptPath()
-    {
+    private String getPptPath() {
         URL path = getClass().getClassLoader().getResource("assets/TestAutomation.pptx");
         String pathPpt = path.getPath();
         return pathPpt;
     }
 
-    public String getMp3Path()
-    {
+    private String getMp3Path() {
         URL path = getClass().getClassLoader().getResource("assets/mpthreetest.mp3");
+        String pathPpt = path.getPath();
+        return pathPpt;
+    }
+    private String getXlsPath() {
+        URL path = getClass().getClassLoader().getResource("assets/xlsDocument.xls");
         String pathPpt = path.getPath();
         return pathPpt;
     }

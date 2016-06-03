@@ -26,7 +26,7 @@ public class ClassroomContentDeletionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void deleteManualSessionFromClass() {
+    public void deleteSessionFromClass() {
         addClassPage.deleteSession();
         addClassPage.confirmRemovalofClass();
         assertFalse(addClassPage.sessionIsRemoved());

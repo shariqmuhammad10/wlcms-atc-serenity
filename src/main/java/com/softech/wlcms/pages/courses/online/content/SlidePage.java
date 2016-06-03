@@ -210,6 +210,7 @@ public class SlidePage extends WaitActions {
         submitSlide.waitUntilClickable();
         submitSlide.click();
         submitSlide.waitUntilNotVisible();
+
     }
 
 
@@ -227,6 +228,7 @@ public class SlidePage extends WaitActions {
         clickSubmitSlide();
         logger.info("Slide is Created");
         logger.info("Slide Name > " + title);
+        customWaitUntilUnLoaded(By.cssSelector(".alert.alert-success.alert-dismissible.fade.in"));
     }
 
     public void clickAddSlide() {
@@ -353,6 +355,7 @@ public class SlidePage extends WaitActions {
 
     public void expendMcSlideAudioComponent() {
         waitUntilLoaded(audioSlideComonent);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", audioSlideComonent);
         audioSlideComonent.waitUntilClickable();
         audioSlideComonent.sendKeys("");
         audioSlideComonent.click();
@@ -401,6 +404,7 @@ public class SlidePage extends WaitActions {
     public void expendMcSlideVideoComponent() {
 
         waitUntilLoaded(mcVideoAssetIcon);
+
         mcVideoAssetIcon.waitUntilClickable();
 //        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", textSlideComonentTextBox);
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true)", mcVideoAssetIcon);
