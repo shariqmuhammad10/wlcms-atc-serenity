@@ -320,6 +320,7 @@ public class OnlineCourseTest {
         logger.info("<----------------------------------------------------->");
     }
 
+
     @WithTag(type = "release", name = "regression-3-test")
     @Title("Verify Creation of New Slide with MC-Scenario Template Under New Lesson")
     @Test
@@ -385,6 +386,50 @@ public class OnlineCourseTest {
 
         logger.info("<----------------------------------------------------->");
         logger.info("<---- WLCMS Text in Slide of MC-Scenario Template Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Creation of New Slide with DND-Matching Template Under New Lesson")
+    @Test
+    public void addSlideDndMatchingActivityTemplate() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Add New Slide with DND-Matching Template Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourseDndTemplate();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Add New Slide of DND-Matching Template Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Creation of New Slide with DND-Image Template Under New Lesson")
+    @Test
+    public void addSlideDndCategoryActivityTemplate() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Add New Slide with DND-Image Template Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourseDndCategoryTemplate();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Add New Slide of DND-Image Template Test is Completed ---->");
         logger.info("<----------------------------------------------------->");
     }
 

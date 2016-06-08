@@ -4,7 +4,6 @@ import com.softech.wlcms.steps.common.WlcmsHomePageSteps;
 import com.softech.wlcms.steps.common.WlcmsLoginSteps;
 import com.softech.wlcms.steps.content_deletion_steps.ClassroomContentDeletionSteps;
 import com.softech.wlcms.steps.course_creation_steps.CourseCreationSteps;
-import net.serenitybdd.core.Serenity;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
@@ -80,12 +79,62 @@ public class ClassroomContentDelationTest {
         courseCreationSteps.addClassInClassroom();
         courseCreationSteps.addManualSessionInClassroom();
 
-        classroomContentDeletionSteps.deleteManualSessionFromClass();
+        classroomContentDeletionSteps.deleteSessionFromClass();
 
         logger.info("<----------------------------------------------------->");
         logger.info("<---- WLCMS Deletion of Manual Session From Class Test is Completed ---->");
         logger.info("<----------------------------------------------------->");
     }
 
+
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Deletion of Daily Session From Class in Classroom Course")
+    @Test
+    public void deleteDailySessionFromClassroomCourse() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Deletion of Daily Session from Class in Classroom Course Test -->");
+        logger.info("<---------------------------------------------------->");
+
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToClassroomCourseCreation();
+
+        courseCreationSteps.createClassroomCourse();
+        courseCreationSteps.addClassInClassroom();
+        courseCreationSteps.addDailySessionInClassroom();
+
+        classroomContentDeletionSteps.deleteSessionFromClass();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Deletion of Daily Session From Class Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Deletion of Daily Session From Class in Classroom Course")
+    @Test
+    public void deleteWeeklySessionFromClassroomCourse() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Deletion of Weekly Session from Class in Classroom Course Test -->");
+        logger.info("<---------------------------------------------------->");
+
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToClassroomCourseCreation();
+
+        courseCreationSteps.createClassroomCourse();
+        courseCreationSteps.addClassInClassroom();
+        courseCreationSteps.addWeeklySessionInClassroom();
+
+        classroomContentDeletionSteps.deleteSessionFromClass();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Deletion of Weekly Session From Class Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
 
 }

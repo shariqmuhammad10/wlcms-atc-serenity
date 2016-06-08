@@ -192,6 +192,30 @@ public class UploadAssetsOnlineCourseTest {
         logger.info("<----------------------------------------------------->");
     }
 
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Addition of XLS Document In Lesson Support Material")
+    @Test
+    public void addXlsInLessonSupportMaterial() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Upload XLS in Lesson Support Material Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSupportMaterial();
+
+        uploadAssetsSteps.uploadXlsInLesson();
+
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS XLS Document Lesson Support Material Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
 
 
     @After

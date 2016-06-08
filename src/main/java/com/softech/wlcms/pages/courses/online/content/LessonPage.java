@@ -240,4 +240,11 @@ public class LessonPage extends WaitActions {
         logger.info("Click On Accept PPT ");
 
     }
+
+    public void uploadXlsInLesson() {
+        WebElement uploadPdfElement = getDriver().findElement(By.cssSelector("#supportingMaterialUploader [type='file']"));
+        String pathXLS = assets.getPath(GetAssets.AssetTypeEnum.XLS);
+        upload(pathXLS).to(uploadPdfElement);
+        logger.info("Uploaded XLS File");
+    }
 }
