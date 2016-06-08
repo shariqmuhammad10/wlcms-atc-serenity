@@ -58,7 +58,7 @@ public class AddScehdulePage extends WaitActions {
         enrollmentCloseDate.waitUntilVisible();
         enrollmentCloseDate.sendKeys("");
         enrollmentCloseDate.click();
-        datePickerActions .setEndDate();
+        datePickerActions.setEndDate();
 
     }
 
@@ -67,7 +67,7 @@ public class AddScehdulePage extends WaitActions {
         courseStartDate.waitUntilVisible();
         courseStartDate.sendKeys("");
         courseStartDate.click();
-        datePickerActions .setStartDate();
+        datePickerActions.setStartDate();
 
 //        if (dateNew1.getAttribute("style").startsWith("display")) {
 //            waitUntilLoaded(dateNew1);

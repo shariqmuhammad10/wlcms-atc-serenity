@@ -17,7 +17,7 @@ import static junit.framework.TestCase.assertTrue;
  * Created by umair.javaid on 3/2/2016.
  */
 public class PublishingSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(PublishingSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(PublishingSteps.class);
 
     CourseOverviewPage courseOverviewPage;
     LessonPage lessonPage;
@@ -42,7 +42,8 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performOnlineSFPublishing() {
-        publishCoursePage.selectSFPublishCheckBox();
+        publishCoursePage.switchLMSPublishingOn();
+        publishCoursePage.switchSFPublishOption();
         publishCoursePage.clickOnlinePublish();
         publishCoursePage.waitPublishToComplete();
         assertTrue(publishCoursePage.isUpdate());
@@ -51,6 +52,7 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performOnlineLmsPublishing() {
+        publishCoursePage.switchLMSPublishingOn();
         publishCoursePage.clickOnlinePublish();
         publishCoursePage.waitPublishToComplete();
         assertTrue(publishCoursePage.isUpdate());
@@ -78,6 +80,7 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performLmsPublishing() {
+        publishCoursePage.switchLMSPublishingOn();
         publishCoursePage.clickPublish();
         publishCoursePage.waitPublishToComplete();
 //        assertTrue(publishCoursePage.isUpdate());
@@ -86,7 +89,8 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performSfPublishing() {
-        publishCoursePage.selectSFPublishCheckBox();
+        publishCoursePage.switchLMSPublishingOn();
+        publishCoursePage.switchSFPublishOption();
         publishCoursePage.clickPublish();
         publishCoursePage.waitPublishToComplete();
 //        assertTrue(publishCoursePage.isUpdate());
@@ -95,7 +99,7 @@ public class PublishingSteps extends ScenarioSteps {
 
     @Step
     public void performSfRePublishing() {
-        publishCoursePage.selectSFRePublishCheckBox();
+//        publishCoursePage.selectSFRePublishCheckBox();
         publishCoursePage.clickPublish();
         publishCoursePage.waitPublishToComplete();
 //        assertTrue(publishCoursePage.isUpdate());

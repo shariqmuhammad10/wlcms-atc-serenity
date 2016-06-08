@@ -13,6 +13,7 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.ExecuteScript;
+import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +25,22 @@ import java.util.List;
 
 public class SlidePage extends WaitActions {
     private static final Logger logger = LoggerFactory.getLogger(SlidePage.class);
+
+
+    public enum AssetTypeEnum {
+        IMAGE("image"),
+        VIDEO("MovieClip"),
+        FLASH("flash");
+        private String statusCode;
+
+        private AssetTypeEnum(String statusCode) {
+            this.statusCode = statusCode;
+        }
+
+        public String getElement() {
+            return statusCode;
+        }
+    }
 
     LessonPage lessonPage;
     Faker faker = new Faker();
@@ -94,6 +111,43 @@ public class SlidePage extends WaitActions {
     @FindBy(css = "#lessons_accordion_0 #VideoListing td")
     private WebElementFacade videoAssetText;
 
+    @FindBy(css = "#lessons_accordion_0 [title='Text'] .tools a.expand")
+    private WebElementFacade textSlideComonent;
+
+    @FindBy(css = "#SceneText .cke_inner iframe")
+    private WebElementFacade textSlideComonentTextBox;
+
+    @FindBy(css = "#SceneText .cke_inner iframe p")
+    private WebElementFacade abc;
+
+    @FindBy(css = "#lessons_accordion_0 [title='Audio Asset'] .tools a.expand")
+    private WebElementFacade audioSlideComonent;
+
+    @FindBy(css = "#lessons_accordion_0 [data-target='#addAssetModal'] .icon-plus.blue-text")
+    private WebElementFacade addAutioAssetButton;
+
+    @FindBy(css = "#addAssetModal #audioAssetName")
+    private WebElementFacade audioAsset;
+
+    @FindBy(css = "#addAssetModal .bootstrap-tagsinput [type='text']")
+    private WebElementFacade audioAssetKeyword;
+
+    @FindBy(css = "#addAssetModal #btnSubmitAudioAssetForm")
+    private WebElementFacade uploadAcceptButton;
+
+    @FindBy(css = "#lessons_accordion_0 [title='Visual Asset'] .tools .expand")
+    private WebElementFacade mcVideoAssetIcon;
+
+    @FindBy(css = "#lessons_accordion_0 [data-target='#addVisualAssetModal'] .icon-plus")
+    private WebElementFacade addVideoAssetButton;
+
+    @FindBy(css = "#addVisualAssetModal #cboAssetTypeVisual")
+    private WebElementFacade assetType;
+
+    @FindBy(css = "#lessons_accordion_0 [title='Closed Captioning'] .tools .expand")
+    private WebElementFacade closedCaptioning;
+
+
     public boolean isLessonExpanded() {
 
         logger.info("Check Lesson Components");
@@ -156,6 +210,7 @@ public class SlidePage extends WaitActions {
         submitSlide.waitUntilClickable();
         submitSlide.click();
         submitSlide.waitUntilNotVisible();
+
     }
 
 
@@ -173,6 +228,7 @@ public class SlidePage extends WaitActions {
         clickSubmitSlide();
         logger.info("Slide is Created");
         logger.info("Slide Name > " + title);
+        customWaitUntilUnLoaded(By.cssSelector(".alert.alert-success.alert-dismissible.fade.in"));
     }
 
     public void clickAddSlide() {
@@ -209,9 +265,11 @@ public class SlidePage extends WaitActions {
 
     }
 
-    public void fillVisualAssetName() {
+    public void fillVisualAssetName(String assetName) {
         waitUntilLoaded(visualAssetName);
+        visualAssetName.clear();
         visualAssetName.sendKeys(assetName);
+        logger.info("Fill Visual Asset Name");
     }
 
     public void uploadImageInSlide() {
@@ -221,7 +279,7 @@ public class SlidePage extends WaitActions {
         logger.info("Uploaded Image File");
     }
 
-    public void clickAcceptUploadeImage() {
+    public void clickAcceptUploadeButton() {
 
         waitUntilLoaded(visualAssetAcceptFormButton);
         visualAssetAcceptFormButton.click();
@@ -248,6 +306,7 @@ public class SlidePage extends WaitActions {
         waitUntilLoaded(this.videoAssetName);
         this.videoAssetName.clear();
         this.videoAssetName.sendKeys(videoAssetName);
+        logger.info("Fill Video Asset Name > " + videoAssetName);
     }
 
     public void uploadVideoInSlide() {
@@ -265,11 +324,121 @@ public class SlidePage extends WaitActions {
         videoAssetAcceptFormButton.waitUntilNotVisible();
     }
 
-    public String getVideoAssetText()
-    {
+    public String getVideoAssetText() {
         waitUntilLoaded(videoAssetText);
         logger.info("Verify If Video is Uploaded > Asset Name > " + videoAssetText.getText());
         return videoAssetText.getText();
 
+    }
+
+    public void expendMcSlideTextComponent() {
+        waitUntilLoaded(textSlideComonent);
+        textSlideComonent.sendKeys("");
+        textSlideComonent.click();
+        logger.info("Expend Text Slide Component Area");
+
+    }
+
+    public void addTextInTextSlideComponent(String text) {
+        waitUntilLoaded(textSlideComonentTextBox);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", textSlideComonentTextBox);
+        textSlideComonentTextBox.sendKeys("");
+        textSlideComonentTextBox.click();
+        textSlideComonentTextBox.sendKeys(text);
+        logger.info("Enter Text In Slide Component");
+    }
+
+    public boolean slideComponentTextIsDisplayed() {
+        return textSlideComonentTextBox.isDisplayed();
+
+    }
+
+    public void expendMcSlideAudioComponent() {
+        waitUntilLoaded(audioSlideComonent);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", audioSlideComonent);
+        audioSlideComonent.waitUntilClickable();
+        audioSlideComonent.sendKeys("");
+        audioSlideComonent.click();
+        logger.info("Expend Audio Slide Component Area");
+    }
+
+    public void navigateToUploadAudio() {
+
+        waitUntilLoaded(addAutioAssetButton);
+        addAutioAssetButton.waitUntilClickable();
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", addAutioAssetButton);
+        addAutioAssetButton.sendKeys("");
+        addAutioAssetButton.click();
+        logger.info("Click on Add Audio Asset Button");
+    }
+
+    public void fillAudioAssetName(String audioAssetName) {
+        waitUntilLoaded(audioAsset);
+        audioAsset.waitUntilClickable();
+        audioAsset.sendKeys("");
+        audioAsset.sendKeys(audioAssetName);
+        logger.info("Fill Audio Asset Name >" + audioAssetName);
+    }
+
+    public void fillaudioAssetKeyword(String audioAssetName) {
+        waitUntilLoaded(audioAssetKeyword);
+        audioAssetKeyword.waitUntilClickable();
+        audioAssetKeyword.sendKeys("");
+        audioAssetKeyword.sendKeys(audioAssetName);
+        logger.info("Fill Audio Asset Keyword > " + audioAssetName);
+    }
+
+    public void uploadAudioInSlide() {
+        WebElement browsAudio = getDriver().findElement(By.cssSelector("#audioUploader [type='file']"));
+        String mp3Path = assets.getPath(GetAssets.AssetTypeEnum.MP3);
+        upload(mp3Path).to(browsAudio);
+        logger.info("Upload MP3 in Mc Slide");
+    }
+
+    public void clickAcceptAudioUploadButton() {
+        waitUntilLoaded(uploadAcceptButton);
+        uploadAcceptButton.waitUntilClickable();
+        uploadAcceptButton.click();
+    }
+
+    public void expendMcSlideVideoComponent() {
+
+        waitUntilLoaded(mcVideoAssetIcon);
+
+        mcVideoAssetIcon.waitUntilClickable();
+//        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", textSlideComonentTextBox);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true)", mcVideoAssetIcon);
+        mcVideoAssetIcon.click();
+        logger.info("Expend MC Slide Vedio Component Area");
+    }
+
+    public void navigateToUploadVideoInMcSlide() {
+
+        waitUntilLoaded(addVideoAssetButton);
+        addVideoAssetButton.waitUntilClickable();
+        addVideoAssetButton.click();
+        logger.info("Add Video Asset Button");
+    }
+
+
+    public void uploadMcScenarioVideoInSlide() {
+        WebElement uploadImageElement = getDriver().findElement(By.cssSelector("#visualUploader [type='file']"));
+        String pathImage = assets.getPath(GetAssets.AssetTypeEnum.VIDEO);
+        upload(pathImage).to(uploadImageElement);
+        logger.info("Uploaded Video File");
+    }
+
+    public void selectAssetType(String type) {
+
+        Select select = new Select(assetType);
+        select.selectByValue(type);
+    }
+
+    public void expendMcSlideCloseCaptioning() {
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true)", closedCaptioning);
+        waitUntilLoaded(closedCaptioning);
+        closedCaptioning.sendKeys("");
+        closedCaptioning.click();
+        logger.info("Expend Close Captioning Area");
     }
 }

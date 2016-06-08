@@ -1,6 +1,7 @@
 package com.softech.wlcms.steps.course_creation_steps;
 
 import com.github.javafaker.Faker;
+import com.softech.wlcms.actions.CommonButtonsActions;
 import com.softech.wlcms.actions.DatePickerActions;
 import com.softech.wlcms.pages.common.WlcmsHomePage;
 import com.softech.wlcms.pages.courses.CourseOverviewPage;
@@ -26,7 +27,7 @@ import static org.junit.Assert.assertTrue;
  * Created by umair.javaid on 2/25/2016.
  */
 public class CourseCreationSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(CourseCreationSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(CourseCreationSteps.class);
 
     CourseOverviewPage courseOverviewPage;
     LessonPage lessonPage;
@@ -46,6 +47,7 @@ public class CourseCreationSteps extends ScenarioSteps {
     WebinarSetupPage webinarSetupPage;
     UploadAssetsSteps uploadAssetsSteps;
     DatePickerActions datePickerActions;
+    CommonButtonsActions commonButtonsActions;
 
     @Step
     public void createOnlineCourse() {
@@ -318,7 +320,7 @@ public class CourseCreationSteps extends ScenarioSteps {
         slidePage.expendVideoSlider();
         slidePage.clickAddVideoInSlide();
     }
-
+@Step
     public void addServiceProviderAsOtherProvider() {
         Faker faker = new Faker();
         String url = "https://" + faker.internet().url();
@@ -336,10 +338,65 @@ public class CourseCreationSteps extends ScenarioSteps {
 
     }
 
+    @Step
     public void addNumberQuestionsInFinalExam() {
         String numberOfQuestion = "1";
         questionsPage.addNumberQuestionsInFinalExam(numberOfQuestion);
         questionsPage.saveChanges();
         assertEquals(questionsPage.getTextQuestionBankBar(), numberOfQuestion);
+    }
+
+    @Step
+    public void addSlideIntoOnlineCourseMCScenarioTemplate() {
+        addSlide(SlideTemplateType.ACTIVITY, ActivityTemplateEnum.MC_SCENARIO);
+        assertTrue(slidePage.slideIsDisplayed());
+    }
+
+    @Step
+    public void addTextInSlideComponents() {
+        Faker faker = new Faker();
+        String text = faker.lorem().fixedString(10);
+        slidePage.expendMcSlideTextComponent();
+        slidePage.addTextInTextSlideComponent(text);
+        commonButtonsActions.saveChanges();
+        assertTrue(slidePage.slideComponentTextIsDisplayed());
+    }
+
+    @Step
+    public void addAudioInSlideComponent() {
+        slidePage.expendMcSlideAudioComponent();
+        slidePage.navigateToUploadAudio();
+    }
+
+    @Step
+    public void navigateToUploadVideoInMcScenarioSlide() {
+        slidePage.expendMcSlideVideoComponent();
+        slidePage.navigateToUploadVideoInMcSlide();
+    }
+
+    @Step
+    public void addCloseCaptioningInSlideComponent() {
+        Faker faker = new Faker();
+        String text = faker.lorem().fixedString(10);
+        slidePage.expendMcSlideCloseCaptioning();
+        commonButtonsActions.saveChanges();
+    }
+
+    @Step
+    public void addSlideIntoOnlineCourseDndTemplate() {
+        addSlide(SlideTemplateType.ACTIVITY, ActivityTemplateEnum.DND_MATCHING);
+        assertTrue(slidePage.slideIsDisplayed());
+    }
+
+    @Step
+    public void addSlideIntoOnlineCourseDndCategoryTemplate() {
+        addSlide(SlideTemplateType.ACTIVITY, ActivityTemplateEnum.DND_CATEGORY);
+        assertTrue(slidePage.slideIsDisplayed());
+    }
+
+    private String addSlide(SlideTemplateType template, ActivityTemplateEnum activity) {
+        String title = "Slide -" + LoremIpsum.getInstance().getTitle(1, 3);
+        slidePage.createSlide(template, activity, title);
+        return title;
     }
 }

@@ -142,6 +142,82 @@ public class UploadAssetsOnlineCourseTest {
         logger.info("<----------------------------------------------------->");
     }
 
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Addition of Audio In Slide Component In MC-Scenario Template Under New Lesson")
+    @Test
+    public void addAudioInSlideComponentForMCScenarioTemplate() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Audio in Slide with MC-Scenario Template Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourseMCScenarioTemplate();
+
+        courseCreationSteps.addAudioInSlideComponent();
+        uploadAssetsSteps.uploadAudioInSlide();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Audio in Slide of MC-Scenario Template Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Addition of Video In Slide Component In MC-Scenario Template Under New Lesson")
+    @Test
+    public void addVideoInSlideComponentForMCScenarioTemplate() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Video in Slide with MC-Scenario Template Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSlideIntoOnlineCourseMCScenarioTemplate();
+
+        courseCreationSteps.navigateToUploadVideoInMcScenarioSlide();
+        uploadAssetsSteps.uploadVideoInMcScenarioSlide();
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS Video in Slide of MC-Scenario Template Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
+    @WithTag(type = "release", name = "regression-3-test")
+    @Title("Verify Addition of XLS Document In Lesson Support Material")
+    @Test
+    public void addXlsInLessonSupportMaterial() {
+
+        logger.info("<---------------------------------------------------->");
+        logger.info("<-- Starting WLCMS Upload XLS in Lesson Support Material Test -->");
+        logger.info("<---------------------------------------------------->");
+        wlcmsLoginSteps.LogIntoWlcms();
+
+        wlcmsHomePageSteps.verifyAndCloseTutorialBox();
+        wlcmsHomePageSteps.navigatingToOnlineCourseCreation();
+
+        courseCreationSteps.createOnlineCourse();
+        courseCreationSteps.addLessonIntoOnlineCourse();
+        courseCreationSteps.addSupportMaterial();
+
+        uploadAssetsSteps.uploadXlsInLesson();
+
+
+        logger.info("<----------------------------------------------------->");
+        logger.info("<---- WLCMS XLS Document Lesson Support Material Test is Completed ---->");
+        logger.info("<----------------------------------------------------->");
+    }
+
+
     @After
     public void tearDown() {
         driver.quit();

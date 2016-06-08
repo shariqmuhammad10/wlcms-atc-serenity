@@ -19,7 +19,7 @@ import java.util.List;
  * Created by umair.javaid on 3/14/2016.
  */
 public class DatePickerActions extends WaitActions {
-    public static final Logger logger = LoggerFactory.getLogger(DatePickerActions.class);
+    private static final Logger logger = LoggerFactory.getLogger(DatePickerActions.class);
 
     WaitActions waitActions;
 
@@ -140,8 +140,9 @@ public class DatePickerActions extends WaitActions {
 
         // This Method Takes the System Current Date and Add 4 days and return
         LocalDate date = new LocalDate().now().plusDays(10);
-        DateTimeFormatter formatDate = DateTimeFormat.forPattern("dd");
+        DateTimeFormatter formatDate = DateTimeFormat.forPattern("d");
         String dateToString = date.toString(formatDate);
+        logger.info(dateToString);
         return dateToString;
     }
 }
