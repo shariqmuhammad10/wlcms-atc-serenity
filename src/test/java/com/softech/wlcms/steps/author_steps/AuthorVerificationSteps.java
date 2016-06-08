@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
  * Created by umair.javaid on 2/24/2016.
  */
 public class AuthorVerificationSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(AuthorVerificationSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthorVerificationSteps.class);
 
     SignupPage signupPage;
     WlcmsHomePage wlcmsHomePage;

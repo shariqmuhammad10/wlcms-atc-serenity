@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertTrue;
  * Created by umair.javaid on 5/3/2016.
  */
 public class ClassroomContentDeletionSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(ClassroomContentDeletionSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(ClassroomContentDeletionSteps.class);
 
     AddClassPage addClassPage;
 
@@ -26,7 +26,7 @@ public class ClassroomContentDeletionSteps extends ScenarioSteps {
     }
 
     @Step
-    public void deleteManualSessionFromClass() {
+    public void deleteSessionFromClass() {
         addClassPage.deleteSession();
         addClassPage.confirmRemovalofClass();
         assertFalse(addClassPage.sessionIsRemoved());

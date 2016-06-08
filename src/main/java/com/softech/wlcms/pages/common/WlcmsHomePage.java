@@ -14,7 +14,7 @@ import java.util.List;
  * Created by umair.javaid on 2/24/2016.
  */
 public class WlcmsHomePage extends WaitActions {
-    public static final Logger logger = LoggerFactory.getLogger(WlcmsHomePage.class);
+    private static final Logger logger = LoggerFactory.getLogger(WlcmsHomePage.class);
 
     public enum CourseTypeEnum {
         ONLINE("Online"),

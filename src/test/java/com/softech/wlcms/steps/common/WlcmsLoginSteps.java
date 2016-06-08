@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
  * Created by umair.javaid on 2/22/2016.
  */
 public class WlcmsLoginSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(WlcmsLoginSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(WlcmsLoginSteps.class);
     public String currentURL = "";
 
     private WlcmsUserCredentialsFromProperties wlcmsUserProps = new WlcmsUserCredentialsFromProperties();

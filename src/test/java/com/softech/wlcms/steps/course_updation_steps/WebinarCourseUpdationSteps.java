@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
  * Created by umair.javaid on 4/26/2016.
  */
 public class WebinarCourseUpdationSteps {
-    public static final Logger logger = LoggerFactory.getLogger(WebinarCourseUpdationSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(WebinarCourseUpdationSteps.class);
 
     WebinarLeftNavigationPage webinarLeftNavigationPage;
     CourseOverviewPage courseOverviewPage;

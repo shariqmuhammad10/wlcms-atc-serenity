@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(SerenityRunner.class)
 public class RePublishingClassroomCourseMetaDataTest {
-    public static final Logger logger = LoggerFactory.getLogger(RePublishingClassroomCourseMetaDataTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(RePublishingClassroomCourseMetaDataTest.class);
 
     @Managed
     WebDriver driver;
@@ -75,7 +75,7 @@ public class RePublishingClassroomCourseMetaDataTest {
         classRoomCourseUpdationSteps.updateClassroomCourseName();
 
         publishingSteps.navigateToPublishCourse();
-        publishingSteps.selectMetaDataOptionForLms();
+//        publishingSteps.selectMetaDataOptionForLms();
         publishingSteps.performLmsPublishing();
 
         logger.info("<---------------------------------------------------->");
@@ -112,8 +112,8 @@ public class RePublishingClassroomCourseMetaDataTest {
         classRoomCourseUpdationSteps.updateClassroomCourseName();
 
         publishingSteps.navigateToPublishCourse();
-        publishingSteps.selectMetaDataOptionForLms();
-        publishingSteps.performSfRePublishing();
+//        publishingSteps.selectMetaDataOptionForLms();
+        publishingSteps.performSfPublishing();
 
         logger.info("<---------------------------------------------------->");
         logger.info("<---- Classroom Meta Data Re-Publish to SF Test is Completed ---->");
@@ -150,7 +150,7 @@ public class RePublishingClassroomCourseMetaDataTest {
         courseCreationSteps.addSecondClassInClassroom();
 
         publishingSteps.navigateToPublishCourse();
-        publishingSteps.selectMetaDataOptionForLms();
+//        publishingSteps.selectMetaDataOptionForLms();
         publishingSteps.performLmsPublishing();
 
         logger.info("<---------------------------------------------------->");
@@ -189,8 +189,8 @@ public class RePublishingClassroomCourseMetaDataTest {
         courseCreationSteps.addSecondClassInClassroom();
 
         publishingSteps.navigateToPublishCourse();
-        publishingSteps.selectMetaDataOptionForLms();
-        publishingSteps.performSfRePublishing();
+//        publishingSteps.selectMetaDataOptionForLms();
+        publishingSteps.performSfPublishing();
 
         logger.info("<---------------------------------------------------->");
         logger.info("<---- Classroom Course Content Re-Publish to SF Test is Completed ---->");

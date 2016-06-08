@@ -12,7 +12,7 @@ import java.util.List;
  * Created by umair.javaid on 5/4/2016.
  */
 public class AuthorPermissionsPage extends WaitActions {
-    public static final Logger logger = LoggerFactory.getLogger(AuthorPermissionsPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthorPermissionsPage.class);
 
     @FindBy(id = "seachText")
     private WebElementFacade seachText;

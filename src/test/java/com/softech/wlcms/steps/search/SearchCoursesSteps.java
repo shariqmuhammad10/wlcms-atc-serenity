@@ -13,7 +13,7 @@ import static junit.framework.TestCase.assertTrue;
  * Created by umair.javaid on 3/3/2016.
  */
 public class SearchCoursesSteps extends ScenarioSteps {
-    public static final Logger logger = LoggerFactory.getLogger(SearchCoursesSteps.class);
+    private static final Logger logger = LoggerFactory.getLogger(SearchCoursesSteps.class);
 
 SearchPage searchPage;
     CourseOverviewPage courseOverviewPage;
