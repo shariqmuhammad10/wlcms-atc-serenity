@@ -55,5 +55,5 @@ public class LoginVerificationTest {
     @After
     public void tearDown() {
         driver.quit();
-    }
-}
+        }
+        }
