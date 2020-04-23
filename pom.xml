@@ -16,7 +16,7 @@
         <!--                Compiler                -->
         <jdk.version>1.8</jdk.version>
 
-        <!--                Testing                 -->
+        <!--                Testing    push changes             -->
         <webdriver.driver>firefox</webdriver.driver>
         <webdriver.ie>C:\webdriver_drivers\IEDriverServer.exe</webdriver.ie>
         <webdriver.chrome>D:\\AutomationConfigration\\WebDriver\\chromedriver.exe</webdriver.chrome>
